@@ -13,6 +13,10 @@ import { filterAvailableCompletedForms } from "./form-grouper";
 import Parcel from "single-spa-react/parcel";
 import { Link } from "react-router-dom";
 import { Subscription } from "rxjs";
+import {
+  getStartedVisit,
+  startVisitPrompt
+} from "@openmrs/esm-patient-chart-widgets";
 
 export default function FormsList(props: FormsListProps) {
   // console.log("props", props);
@@ -36,6 +40,10 @@ export default function FormsList(props: FormsListProps) {
   };
 
   const handleFormSelected = (selectedForm, formName, encounter = null) => {
+    if (getStartedVisit.value === null && encounter === null) {
+      startVisitPrompt();
+      return;
+    }
     newWorkspaceItem({
       component: p => {
         return (
@@ -45,6 +53,7 @@ export default function FormsList(props: FormsListProps) {
             formUuid={selectedForm}
             key={selectedForm}
             encounterUuid={encounter}
+            visitUuid={getStartedVisit.value.visitData.uuid}
             entryStarted={p.entryStarted}
             entrySubmitted={p.entrySubmitted}
             entryCancelled={p.entryCancelled}
