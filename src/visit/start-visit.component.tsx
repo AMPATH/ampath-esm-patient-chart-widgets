@@ -7,12 +7,8 @@ import { FetchResponse } from "@openmrs/esm-api/dist/openmrs-fetch";
 import styles from "./start-visit.component.css";
 import LocationSelectComponent from "../widgets/location-select.component";
 import { toOmrsDateString } from "../utils/omrs-dates";
-import { ProgramConfig } from "../forms/form-grouper";
-import { useConfig } from "@openmrs/esm-module-config";
 
 export default function StartVisitComponent(props: StartVisitProps) {
-  const config: ProgramConfig = useConfig<ProgramConfig>();
-
   const [patientUuid, setPatientUuid] = React.useState<string>();
 
   const [visitStartDate, setVisitStartDate] = React.useState(

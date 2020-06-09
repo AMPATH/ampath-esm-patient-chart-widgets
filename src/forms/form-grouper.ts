@@ -1,6 +1,7 @@
 import { Form } from "../openmrs-resource/form.resource";
 import { FormsFilter, areFormsEqual } from "./form-list-filter";
 import { Encounter } from "../openmrs-resource/encounter.resource";
+import { ProgramFormsConfig } from "../config/programs.schema";
 
 export function groupFormsByProgram(
   forms: Array<Form>,
@@ -66,19 +67,4 @@ export type ProgramForms = {
   programForms: Array<Form>;
   availableForms?: Array<Form>;
   completedForms?: Array<Encounter>;
-};
-
-export type ProgramFormsConfig = {
-  programUuid: string;
-  programName: string;
-  forms: Array<FormSelector>;
-};
-
-export type ProgramConfig = {
-  programs: ProgramFormsConfig[];
-};
-
-export type FormSelector = {
-  encounterTypeUuid: string;
-  formUuid?: string;
 };

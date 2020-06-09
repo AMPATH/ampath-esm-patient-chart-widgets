@@ -1,10 +1,7 @@
-import {
-  ProgramFormsConfig,
-  ProgramForms,
-  groupFormsByProgram
-} from "./form-grouper";
+import { ProgramForms, groupFormsByProgram } from "./form-grouper";
 import { Form } from "../openmrs-resource/form.resource";
 import { Encounter } from "../openmrs-resource/encounter.resource";
+import { ProgramFormsConfig } from "../config/programs.schema";
 describe("Form Grouper", () => {
   const programFormsConfig: Array<ProgramFormsConfig> = [
     {

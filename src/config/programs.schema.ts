@@ -1,6 +1,6 @@
 import { validators } from "@openmrs/esm-module-config";
 
-export const esmPatientChartWidgetsSchema = {
+export const programsConfigSchema = {
   programs: {
     arrayElements: {
       programUuid: { validators: [validators.isString] },
@@ -15,4 +15,19 @@ export const esmPatientChartWidgetsSchema = {
     },
     default: []
   }
+};
+
+export type ProgramFormsConfig = {
+  programUuid: string;
+  programName: string;
+  forms: Array<FormSelector>;
+};
+
+export interface ProgramConfig {
+  programs: ProgramFormsConfig[];
+}
+
+export type FormSelector = {
+  encounterTypeUuid: string;
+  formUuid?: string;
 };
